@@ -2,6 +2,48 @@ options(prompt="R> ")
 
 
 
+#################
+### CHAPTER 1 ###
+#################
+
+# current library paths
+.libPaths()
+
+# show: currently loaded packages
+(.packages())
+
+# load package
+library(MASS)
+(.packages())
+
+# detach a package
+detach("package:MASS", unload = TRUE)
+(.packages())
+
+# install packages
+install.packages("ks")
+
+# update packages
+update.packages()
+
+# call documentation for a function or dataset
+help(mean)
+?mtcars
+
+# search across all packages for a function/dataset containing a string
+help.search("mean")
+??mean
+
+
+# show all objects
+ls()
+
+# create an object
+x <- c(0:10, 50)
+ls()
+
+
+
 
 #################
 ### CHAPTER 2 ###
@@ -13,45 +55,72 @@ options(prompt="R> ")
 
 ##  2.1.1 ##
 
-2+3
-14/6
-14/6+5
-14/(6+5)
+2 + 3
+14 / 6
+14 / 6 + 5
+14 / (6 + 5)
 3^2
 2^3
 
 #
 
-sqrt(x=9)
-sqrt(x=5.311)
+sqrt(x = 9)
+sqrt(x = 5.311)
 
 #
 
-10^2+3*60/8-3
-5^3*(6-2)/(61-3+4)
-2^(2+1)-4+64^((-2)^(2.25-1/4))
-(0.44*(1-0.44)/34)^0.5
+10^2 + 3 * 60 / 8 - 3
+5^3 * (6 - 2) / (61 - 3 + 4)
+2^(2 + 1) - 4 + 64^((-2)^(2.25 - 1 / 4))
+(0.44 * (1 - 0.44) / 34)^0.5
 
 
 ## 2.1.2 ##
 
-log(x=243,base=3)
+log(x = 243, base = 3)
 
-#
+# exponential function
+# (Euler number e raised to the power of x)
+exp(x = 3)
 
-exp(x=3)
-
-#
-
-log(x=20.08554)
+# natural log
+# (log with base e = 2.718)
+log(x = 20.08554)
 
 
 ## 2.1.3 ##
 
+# e-notation
 2342151012900
 0.0000002533
 
 
+# Exercise 2.1
+
+# a.
+a <- 2.3
+(6*a+42) / (3^(4.2-3.62))
+
+# b.
+# Which of the following squares negative 4 and adds 2 to the result?
+# i.
+(-4)^2 + 2
+
+# c.
+# How would you calculate the square root of half of the average of
+# the numbers 25.2, 15, 16.44, 15.3, and 18.6?
+sqrt(mean(c(25.2, 15, 16.44, 15.3, 18.6)) / 2)
+
+# d.
+log(0.3)
+
+# e.
+exp(-1.203973) # !
+exp(log(0.3))
+
+# f.
+x <- -0.00000000423546322
+x
 
 ###############
 # Section 2.2 #
@@ -70,6 +139,26 @@ y
 ls()
 
 
+# Exercise 2.2
+
+# a.
+x <- 3^2 * 4^(1/8)
+x
+
+# b.
+x <- x / 2.33
+x
+
+# c.
+y <- -8.2e-13
+y
+
+# d.
+x * y
+
+# e.
+rm(y)
+
 
 ###############
 # Section 2.3 #
@@ -77,13 +166,13 @@ ls()
 
 ## 2.3.1 ##
 
-myvec <- c(1,3,1,42)
+myvec <- c(1, 3, 1, 42)
 myvec
 
 #
 
 foo <- 32.1
-myvec2 <- c(3,-3,2,3.45,1e+03,64^0.5,2+(3-1.1)/9.44,foo)
+myvec2 <- c(3, -3, 2, 3.45, 1e+03, 64^0.5, 2 + (3 - 1.1) / 9.44, foo)
 myvec2
 
 #
@@ -156,6 +245,38 @@ foo <- 4
 bar <- c(3,8.3,rep(x=32,times=foo),seq(from=-2,to=1,length.out=foo+1))
 length(x=bar)
 
+# Exercise 2.3.2
+
+# a.
+# create and store a sequence of values from 5 to –11 that progresses
+# in steps of 0.3
+x <- seq(from = 5, to = -11, by = -0.3)
+x
+
+# b.
+# overwrite the object from a. using the same sequence with the order reversed
+x <- sort(x, decreasing = FALSE)
+x
+
+# c.
+# Repeat the vector c(-1,3,-5,7,-9) twice, with each element repeated 10 times,
+# and store the result. Display the result sorted from largest to smallest.
+x <- rep(c(-1, 3, -5, 7, -9), each = 10)
+sort(x, decreasing = TRUE)
+
+# d.
+# Create and store a vector that contains, in any configuration, the following:
+# i. a sequence of integers from 6 to 12 (inclusive)
+# ii. a threefold repetition of the value 5.3
+# iii. the number –3
+# iv. a sequence of nine values starting at 102 and ending at the number that
+# is the total length of the vector created in c.
+y <- c(6:12, rep(5.3, times = 3), -3, seq(102, length(x), length.out = 9))
+y
+
+# e.
+# confirm that the length of the vector created in d. is 20
+length(y)
 
 ## 2.3.3 ##
 
