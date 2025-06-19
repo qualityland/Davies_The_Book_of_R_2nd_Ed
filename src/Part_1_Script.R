@@ -278,6 +278,8 @@ y
 # confirm that the length of the vector created in d. is 20
 length(y)
 
+
+
 ## 2.3.3 ##
 
 myvec <- c(5,-2.3,4,4,4,6,8,10,40221,-8)
@@ -371,6 +373,49 @@ bar
 bar[7:10] <- 100
 bar
 
+# Exercise 2.3.3
+
+# a. Create and store a vector that contains the following, in this order:
+# - a sequence of length five, from 3 to 6 (inclusive)
+# - a twofold repetition of the vector c(2,-5.1,-33)
+x <- c(seq(from = 3, to = 6, length.out = 5), rep(c(2,-5.1,-33), times = 2), 7/42+2)
+x
+
+
+# b. Extract the first and last elements of your vector from (a), storing them
+#    as a new object.
+y <- x[c(1, length(x))]
+y
+
+# c. Store as a third object the values returned by omitting the first and last
+#.   values of your vector from (a).
+z <- x[-c(1, length(x))]
+z
+
+# d. Use only (b) and (c) to reconstruct (a).
+c(y[1], z, y[length(y)])
+
+# e. Overwrite (a) with the same values sorted from smallest to largest.
+x <- sort(x)
+x
+
+# f. Use the colon operator as an index vector to reverse the order of (e), and
+#    confirm this is identical to using sort on (e) with decreasing=TRUE.
+x[length(x):1] == sort(x, decreasing = TRUE)
+
+# g. Create a vector from (c) that repeats the third element of (c) three times,
+#    the sixth element four times, and the last element once.
+g <- rep(z[c(3, 6, length(z))], times = c(3, 4, 1))
+g
+
+# h. Create a new vector as a copy of (e) by assigning (e), as is, to a newly
+#    named object. Using this new copy of (e), overwrite the first, the fifth to
+#    the seventh (inclusive), and the last element with the values 99 to 95
+#    (inclusive), respectively.
+h <- x
+h[c(1, 5:7, length(h))] <- 99:95
+h
+
 
 ## 2.3.4 ##
 
@@ -411,6 +456,21 @@ foo
 foo[c(1,3,5,6)] <- c(-99,99)
 foo
 
+# Exercise 2.3.4
+
+# a. Using a vector of length 3, turn the vector c(2,0.5,1,2,0.5,1,2,0.5,1)
+#    into a vector of only 1s.
+a <- c(2, 0.5, 1, 2, 0.5, 1, 2, 0.5, 1)
+a / c(2, 0.5, 1)
+
+# b. Convert temperatures from Fahrenheit to Celsius
+f <- c(45, 77, 20, 19, 101, 120, 212)
+c <- (f - 32) * 5 / 9
+c
+
+# c. Use the vector c(2,4,6) and the vector c(1,2) in conjunction with rep
+#    and * to produce the vector c(2,4,6,4,8,12).
+rep(c(2, 4, 6), times=2) * rep(c(1, 2), each = 3)
 
 
 
